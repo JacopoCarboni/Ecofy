@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'leaderboard.dart';
-import 'package:ecofy/welcome_screen.dart'; // Replace your_app_name with the actual app name
-import 'signup_screen.dart'; // Import SignUpScreen
-import 'login_screen.dart'; // Import LoginScreen
+import 'pages/leaderboard.dart';
+import 'package:ecofy/pages/welcome_screen.dart'; // Replace your_app_name with the actual app name
+import 'pages/signup_screen.dart'; // Import SignUpScreen
+import 'pages/login_screen.dart'; // Import LoginScreen
 
 void main() {
   runApp(const Ecofy()); // Add const here

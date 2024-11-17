@@ -25,7 +25,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  // ignore: non_constant_identifier_names
   Widget Head() {
     return Container(
       color: backgroundColor,
