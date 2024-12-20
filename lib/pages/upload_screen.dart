@@ -1,18 +1,19 @@
 import 'dart:convert';
 
 import 'package:aws_s3_upload_lite/aws_s3_upload_lite.dart';
-import 'package:ecofy/services/general/imageUpload.dart';
+import 'package:ecofy/services/general/image_upload.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:nearmessageapp/services/general/localstorage.dart';
+import 'package:ecofy/services/general/localstorage.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class Profilepage extends StatefulWidget {
   final String userId;
   final WebSocketChannel socketChannel;
-  const Profilepage({super.key, required this.userId, required this.socketChannel});
+  const Profilepage(
+      {super.key, required this.userId, required this.socketChannel});
 
   @override
   State<Profilepage> createState() => _ProfilepageState();
@@ -39,7 +40,8 @@ class _ProfilepageState extends State<Profilepage> {
         filename: "${widget.userId}.png",
       );
 
-      var profilePicURL = "https://ecofy-app.s3.eu-central-1.amazonaws.com/profilePics/${widget.userId}.png";
+      var profilePicURL =
+          "https://ecofy-app.s3.eu-central-1.amazonaws.com/profilePics/${widget.userId}.png";
       saveDataToLocalStorage("profilePic", profilePicURL);
 
       widget.socketChannel.sink.add(jsonEncode({
@@ -47,7 +49,6 @@ class _ProfilepageState extends State<Profilepage> {
         "userId": widget.userId,
         "profilePic": profilePicURL
       }));
-
     }
   }
 

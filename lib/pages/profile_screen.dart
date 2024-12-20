@@ -20,12 +20,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
       length: 3,
       child: Scaffold(
         backgroundColor: backgroundColor,
-        body: SafeArea(child: SingleChildScrollView(child: Head())),
+        body: SafeArea(child: SingleChildScrollView(child: head())),
       ),
     );
   }
 
-  Widget Head() {
+  Widget head() {
     return Container(
       color: backgroundColor,
       child: Column(
