@@ -5,7 +5,7 @@ import 'package:ecofy/components/button.dart';
 import 'package:ecofy/components/mytextfield.dart';
 import 'package:ecofy/services/general/colors.dart';
 import 'package:ecofy/services/general/snackbar.dart';
-import 'package:ecofy/welcome_screen.dart';
+import 'package:ecofy/pages/welcome_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});

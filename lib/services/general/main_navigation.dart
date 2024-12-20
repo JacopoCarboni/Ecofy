@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'profile_screen.dart';
-import 'leaderboard.dart';
-import 'settings_screen.dart'; // You will need to create this screen
+import '../../pages/profile_screen.dart';
+import '../../pages/leaderboard.dart';
+import '../../pages/settings_screen.dart'; // You will need to create this screen
 
 class MainNavigation extends StatefulWidget {
   const MainNavigation({super.key});

@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:ecofy/components/button.dart';
 import 'package:ecofy/components/mytextfield.dart';
-import 'package:ecofy/profile_screen.dart';
 import 'package:ecofy/services/general/colors.dart';
 import 'package:ecofy/services/general/snackBar.dart';
-import 'package:ecofy/signup_screen.dart';
-import 'package:ecofy/main_navigation.dart';
+import 'package:ecofy/pages/signup_screen.dart';
+import 'package:ecofy/services/general/main_navigation.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -39,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
         if (response.statusCode == 200) {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => MainNavigation()),
+            MaterialPageRoute(builder: (context) => const MainNavigation()),
           );
         }
       }
