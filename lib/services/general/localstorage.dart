@@ -149,15 +149,10 @@ class DatabaseService {
   }
 
   // Clear all rows in the database
-  Future<int> clearAll() async {
+  Future<int> clearAllExecpt(String userId) async {
     Database db = await database;
-    try {
-      return await db
-          .delete(tableName); // Deletes all rows from the 'users' table
-    } catch (e) {
-      print("Error clearing all rows: $e");
-      return 0; // Return 0 to indicate no rows were deleted
-    }
+    return await db
+        .delete(tableName, where: '$columnUserId != ?', whereArgs: [userId]);
   }
 
   Future<int> replace(Map<String, dynamic> row) async {

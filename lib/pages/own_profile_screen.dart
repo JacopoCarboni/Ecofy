@@ -1,3 +1,4 @@
+import 'package:ecofy/components/avatarCircle.dart';
 import 'package:ecofy/services/general/image_upload.dart';
 import 'package:ecofy/services/general/localstorage.dart';
 import 'package:flutter/material.dart';
@@ -115,14 +116,10 @@ class _OwnProfileScreenState extends State<OwnProfileScreen> {
             },
             child: Column(
               children: [
-                CircleAvatar(
-                  radius: widget.width * 0.12, // Adjusted size
-                  backgroundImage: widget.userData["profilePic"] == ""
-                      ? NetworkImage(
-                          "https://ecofy-app.s3.eu-central-1.amazonaws.com/istockphoto-1130884625-612x612.jpg")
-                      : NetworkImage(widget.userData["profilePic"]),
-                ),
-                const SizedBox(height: 8), // Add slight spacing below avatar
+                AvatarCircle(
+                    width: widget.width * 0.12,
+                    profilePic: widget.userData["profilePic"]),
+                SizedBox(height: widget.height * 0.009),
               ],
             ),
           ),

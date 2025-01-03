@@ -8,7 +8,7 @@ WebSocketChannel connectToWebsocket(String paramsApiUrl) {
   return socket;
 }
 
-void listendMsg(WebSocketChannel socket, DatabaseService database) {
+void listendMsg(WebSocketChannel socket, DatabaseService database, String userId) {
   socket.stream.listen(
     (data) {
       try {
@@ -18,7 +18,7 @@ void listendMsg(WebSocketChannel socket, DatabaseService database) {
         if (parsedData.containsKey("data")) {
           final res = parsedData["data"];
 
-          processMsg(res["statusCode"], res, socket, database);
+          processMsg(res["statusCode"], res, socket, database, userId);
         } else {
           print("Message does not contain 'data': $parsedData");
         }
@@ -36,7 +36,7 @@ void listendMsg(WebSocketChannel socket, DatabaseService database) {
 }
 
 void processMsg(int statusCode, Map<String, dynamic> data,
-    WebSocketChannel socket, DatabaseService database) {
+    WebSocketChannel socket, DatabaseService database, String userId) {
   print("Processing: $statusCode");
   switch (statusCode) {
     case 100: // No Return Value
@@ -50,12 +50,11 @@ void processMsg(int statusCode, Map<String, dynamic> data,
           .toList();
 
       // Clear outdated data
-      database.clearAll(); // Add a method in DatabaseService to clear all data
+      database.clearAllExecpt(userId); // Add a method in DatabaseService to clear all data
 
       for (int index = 0; index < allUsers.length; index++) {
         database.replace(allUsers[index]);
       }
-      print("All users replaced in the database: $allUsers");
       break;
     default:
       print("Unhandled statusCode: $statusCode with data: $data");

@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 
+import 'package:ecofy/components/avatarCircle.dart';
 import 'package:ecofy/components/circularLoader.dart';
 import 'package:ecofy/services/general/localstorage.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,6 @@ class _AllUsersScreenState extends State<AllUsersScreen> {
 
   void loadUserData() {
     widget.database.queryAllExcept(widget.userId).then((userList) {
-      print("User data loaded: $userList");
       setState(() {
         allUsers = userList;
         filteredUsers = List.from(userList);
@@ -107,13 +107,11 @@ class _AllUsersScreenState extends State<AllUsersScreen> {
                       final user = filteredUsers[index];
                       return ListTile(
                         leading: ClipOval(
-                          child: Icon(
-                            Icons.person,
-                            size: widget.width * 0.12,
-                            color: Colors.grey,
-                          ),
+                          child: AvatarCircle(
+                              width: widget.width * 0.05,
+                              profilePic: user["profilePic"]),
                         ),
-                        title: Text(user["username"] ?? "Unknown User"),
+                        title: Text(user["username"]),
                         onTap: () {
                           debugPrint("Tapped on ${user['username']}");
                         },

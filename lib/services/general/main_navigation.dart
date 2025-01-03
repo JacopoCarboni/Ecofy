@@ -101,7 +101,7 @@ class _MainNavigationState extends State<MainNavigation> {
       setState(() {
         socket = connectToWebsocket(socketUrl);
       });
-      listendMsg(socket!, widget.database);
+      listendMsg(socket!, widget.database, widget.userId);
     });
   }
 
